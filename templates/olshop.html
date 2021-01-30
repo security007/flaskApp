@@ -1,0 +1,45 @@
+{% extends "dashboard.html" %}
+{% block headtitle %}
+Prime Number
+{% endblock %}
+
+{% block content %}
+<div style="text-align:center;margin:auto;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+  <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:25px;" >Ucup Olshop</label>
+  <form action="" method="POST" name="primeNumber">
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Nama barang</label>
+    <input type="text" name="nama" placeholder="Nama barang" required><br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Harga barang</label>
+    <input type="text" name="harga" placeholder="Harga barang" required><br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Diskon barang</label>
+    <input type="text" style="width:180px;"name="diskon" placeholder="20" required><input style="width:30px;" type="text" name="diskon" value="%" disabled><br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Jumlah barang</label>
+    <input type="text" name="jumlah" placeholder="Jumlah barang" required><br>
+    <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Buat nota">
+  </form>
+</div>
+<div style="margin:auto;overflow: auto;height:270px;text-align:center;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+{% if request.method == 'POST' %}
+  <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:25px;" for="range">Nota</p>
+<div style="width:55%;margin: auto;overflow: auto;height:200px;text-align:center;background-color:rgb(47, 50, 62);border-radius:10px;border:1px solid grey;float:center;">
+  <center><div style="text-align:left;width:20%;background-color:rgb(47, 50, 62);float: left;margin-left:150px;color:white;">
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Nama Barang  : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Harga Barang : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Diskon Barang : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Jumlah Barang : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Jumlah Potongan : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Total Harga : </label>
+  </div></center>
+  <center><div style="text-align:left;width:30%;background-color:rgb(47, 50, 62);float: left;margin-left:50px;">
+    <input style="margin:2px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="{{result['nama']}}" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['harga']}}" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="{{result['diskon']}}%" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="{{result['jumlahbarang']}} PCS" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['jumlahpotongan']}}" disabled><br>
+      <input style="margin:2px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['hargaakhir']}}" disabled><br>
+
+  </div></center>
+</div>
+{% endif %}
+</div>
+{% endblock %}

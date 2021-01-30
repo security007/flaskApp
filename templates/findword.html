@@ -1,0 +1,28 @@
+{% extends "dashboard.html" %}
+{% block headtitle %}
+Find word
+{% endblock %}
+
+{% block content %}
+  <div style="text-align:center;margin:auto;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+    <form action="" method="POST" name="oddevenNum">
+      <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" for="range">Text</label><br>
+      <textarea style="resize: none;border:solid 1px grey;border-radius:10px;" cols="100px" rows="7px" name="data" required>A short story is a piece of prose fiction that typically can be read in one sitting and focuses on a self-contained incident or series of linked incidents, with the intent of evoking a single effect or mood. The short story is one of the oldest types of literature and has existed in the form of legends, mythic tales, folk tales, fairy tales, fables and anecdotes in various ancient communities across the world. The modern short story developed in the early 19th century.</textarea><br>
+      <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" for="range">Word</label>
+      <input type="text" name="word" value="short" required>
+      <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Search">
+    </form>
+  </div>
+  <div style="overflow: auto;height:270px;text-align:center;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+    {% if request.method == 'GET' %}
+    <font style="font-family: 'Times New Roman', Times, serif;font-size:17px;">A <font color= #00ff00 ><b>short</b></font> story is a piece of prose fiction that typically can be read in one sitting and focuses on a self-contained incident or series of linked incidents, with the intent of evoking a single effect or mood. The <font color= #00ff00 ><b>short</b></font> story is one of the oldest types of literature and has existed in the form of legends, mythic tales, folk tales, fairy tales, fables and anecdotes in various ancient communities across the world. The modern <font color= #00ff00 ><b>short</b></font> story developed in the early 19th century. </font>
+    {% endif %}
+    {% for kata in result %}
+      {% if 'not found' not in kata %}
+        <font style="font-family: 'Times New Roman', Times, serif;font-size:17px;">{{kata | safe}} </font>
+      {% else %}
+        <font style="font-family: 'Times New Roman', Times, serif;font-size:17px;">{{kata}} </font>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

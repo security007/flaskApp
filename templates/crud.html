@@ -1,0 +1,48 @@
+{% extends "dashboard.html" %}
+{% block headtitle %}
+Crud Program (Perpustakaan)
+{% endblock %}
+
+{% block content %}
+{% if hapus %}
+  {{ hapus | safe }}
+{% endif %}
+<a href="/crud/add"  >
+    <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:10px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Add New">
+</a>
+<a href="/crud/read" >
+    <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:10px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Read">
+</a>
+<div style="text-align:center;margin:auto;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="border-top-0">Nama Pengunjung</th>
+        <th class="border-top-0">Nama Buku</th>
+        <th class="border-top-0">Jenis Buku</th>
+        <th class="border-top-0">Tanggal Pinjam</th>
+        <th class="border-top-0">Tanggal Kembali</th>
+        <th class="border-top-0">Harga Sewa</th>
+        <th class="border-top-0">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for x in result %}
+        <tr>
+            <td>{{x['namaPengunjung']}}</td>
+            <td>{{x['namaBuku']}}</td>
+            <td>{{x['jenisBuku']}}</td>
+            <td>{{x['tanggalPinjam']}}</td>
+            <td>{{x['tanggalKembali']}}</td>
+            <td>{{x['hargaSewa']}}</td>
+            <td><a href="crud/delete/{{x['id']}}">Delete </a>|<a href="crud/edit/{{x['id']}}"> Edit </a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "dashboard.html" %}
+{% block headtitle %}
+Prime Number
+{% endblock %}
+
+{% block content %}
+<div style="text-align:center;margin:auto;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+  <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:25px;" >PT UCUP SEJAHTERA</label>
+  <form action="" method="POST" name="primeNumber">
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Nama Karyawan :</label>
+    <input type="text" name="nama" placeholder="Nama Karyawan" required><br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Gaji Pokok :</label>
+    <input type="text" name="gajikaryawan" placeholder="Gaji Karyawan" required> /bulan<br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Absen Masuk :</label>
+    <input type="text" name="masuk" placeholder="Absen Masuk" value="30" required> Hari<br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Total Lembur :</label>
+    <input type="text" name="lembur" placeholder="2" required> Jam<br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Bonus Lembur/jam:</label>
+    <input type="text" name="bonus" placeholder="100000" required><br>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" >Total Ijin :</label>
+    <input type="text" name="ijin" placeholder="1" required> Hari<br>
+    <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Buat slip gaji">
+  </form>
+</div>
+<div style="margin:auto;overflow: auto;height:270px;text-align:center;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+{% if request.method == 'POST' %}
+  <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:25px;" for="range">Slip Gaji</p>
+<div style="width:55%;margin: auto;overflow: auto;height:200px;text-align:center;background-color:rgb(47, 50, 62);border-radius:10px;border:1px solid grey;float:center;">
+  <center><div style="text-align:left;width:20%;background-color:rgb(47, 50, 62);float: left;margin-left:150px;color:white;">
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Nama Karyawan  : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Gaji Pokok : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Gaji Perhari : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Total Masuk : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Total Ijin : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Potongan : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Bonus Lembur : </label>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;" >Gaji Bulan Ini : </label>
+  </div></center>
+  <!--{'nama_karyawan':str(karyawan),'gaji_pokok':str(totalgaji),'gaji_perhari':str(gajiperhari),'potongan':str(potongan),'bonus':str(bonus),'gaji_bulan_ini':str(gajibulanini),'total_masuk':str(totalmasuk),'total_ijin':str(total_ijin)}
+      -->
+  <center><div style="text-align:left;width:30%;background-color:rgb(47, 50, 62);float: left;margin-left:50px;">
+    <input style="margin:2px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="{{result['nama_karyawan']}}" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['gaji_pokok']}}" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['gaji_perhari']}}" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="{{result['total_masuk']}} Hari" disabled><br>
+    <input style="margin:4px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="{{result['total_ijin']}} Hari" disabled><br>
+      <input style="margin:2px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['potongan']}}" disabled><br>
+        <input style="margin:2px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['bonus']}}" disabled><br>
+          <input style="margin:2px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:12px;border-top:0px;" value="Rp {{result['gaji_bulan_ini']}}" disabled><br>
+
+  </div></center>
+</div>
+{% endif %}
+</div>
+{% endblock %}

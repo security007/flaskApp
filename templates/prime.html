@@ -1,0 +1,22 @@
+{% extends "dashboard.html" %}
+{% block headtitle %}
+Prime Number
+{% endblock %}
+
+{% block content %}
+<div style="text-align:center;margin:auto;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+  <form action="" method="POST" name="primeNumber">
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" for="range">Input range number</label>
+    <input type="text" name="range" placeholder="50" required>
+    <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="find prime number">
+  </form>
+</div>
+<div style="overflow: auto;height:270px;text-align:center;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+{% if request.method == 'POST' %}
+  <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:25px;" for="range">Result for prime number range 1-{{request.form["range"]}}
+  {% for x in result %}
+      <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;" >{{ x }} Prime Number</p>
+  {% endfor %}
+{% endif %}
+</div>
+{% endblock %}

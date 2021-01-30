@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  background-image: linear-gradient(to right,#C0C0C0,#708090);
+}
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+font{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size:30px;
+  color: rgb(47, 50, 62);
+}
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 70%;
+  margin:auto;
+  margin-top:70px;
+}
+</style>
+</head>
+<body>
+
+<div>
+    <center><font>Login</font></center>
+  {% if request.method == 'POST' %}
+    {{result | safe }}
+  {% endif %}
+  <form action="/login" method="POST" >
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Username</label>
+    <input type="text" name="username" required>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Password</label>
+    <input type="password" name="password"  required>
+  <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Login">
+  </form>
+</div>
+
+</body>
+</html>

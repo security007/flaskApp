@@ -1,0 +1,28 @@
+{% extends "dashboard.html" %}
+{% block headtitle %}
+Odd even number
+{% endblock %}
+
+{% block content %}
+  <div style="text-align:center;margin:auto;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+    <form action="" method="POST" name="oddevenNum">
+      <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" for="range">Input range from</label>
+      <input type="text" name="range1" placeholder="1" required>
+      <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:18px;" for="range">Input range to</label>
+      <input type="text" name="range2" placeholder="50" required>
+      <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="find odd or even number">
+    </form>
+  </div>
+  <div style="overflow: auto;height:270px;text-align:center;background-color: white;border-radius:20px;border:2px solid rgb(47, 50, 62)">
+  {% if request.method == 'POST' %}
+    <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:25px;" for="range">Result for odd or even number range {{request.form["range1"]}}-{{request.form["range2"]}}
+    {% for ganjil in result[0] %}
+      <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;" >{{ ganjil }} Odd number</p>
+    {% endfor %}
+    <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;" >{{'*'*100}}</p>
+    {% for genap in result[1] %}
+      <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;" >{{ genap }} Even number</p>
+    {% endfor %}
+  {% endif %}
+  </div>
+{% endblock %}

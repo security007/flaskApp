@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=date], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<h3>Add Data</h3>
+
+<div>
+  {% if request.method == 'POST' %}
+    {{result | safe}}
+  {% endif %}
+  <form action="/crud/add" method="POST" >
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Nama Pengunjung</label>
+    <input type="text" name="namaPengunjung" required>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Nama Buku</label>
+    <input type="text" name="namaBuku"  required>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Jenis Buku</label>
+    <input type="text" name="jenisBuku"  required>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Tanggal Pinjam</label>
+    <input type="date" name="tanggalPinjam" placeholder="dd-mm-yyyy" required>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Tanggal Kembali</label>
+    <input type="date" name="tanggalKembali" placeholder="dd-mm-yyyy" required>
+    <label style="font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:13px;" for="range">Harga Sewa</label>
+    <input type="text" name="hargaSewa" placeholder="12000" required>
+    <input style="background-color:rgb(47, 50, 62);border:2px solid grey;border-radius:20px;font-family: 'Times New Roman', Times, serif;font-weight: bold;font-size:15px;color:white;" type="submit" name="go" value="Tambah">
+  </form>
+</div>
+
+</body>
+</html>
